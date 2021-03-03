@@ -12,7 +12,7 @@ setup(name='tap-snapchat-ads',
           'backoff>=1.8.0',
           'requests>=2.20.0',
           'pyhumps>=1.3.1',
-          'singer-python>=5.9.0'
+          "singer-python @ git+https://github.com/polar-analytics/singer-python",
       ],
       entry_points='''
           [console_scripts]
