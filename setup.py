@@ -3,16 +3,16 @@
 from setuptools import setup, find_packages
 
 setup(name='tap-snapchat-ads',
-      version='0.0.2',
+      version='0.0.3',
       description='Singer.io tap for extracting data from the Google Search Console API',
       author='jeff.huth@bytecode.io',
       classifiers=['Programming Language :: Python :: 3 :: Only'],
       py_modules=['tap_snapchat_ads'],
       install_requires=[
-          'backoff==1.8.0',
-          'requests==2.20.0',
-          'pyhumps==1.3.1',
-          'singer-python==5.9.0'
+          'backoff>=1.8.0',
+          'requests>=2.20.0',
+          'pyhumps>=1.3.1',
+          'singer-python>=5.9.0'
       ],
       entry_points='''
           [console_scripts]
