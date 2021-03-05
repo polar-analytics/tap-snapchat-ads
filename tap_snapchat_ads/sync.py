@@ -3,6 +3,7 @@ from datetime import timedelta
 import pytz
 import humps
 import singer
+import urllib.parse
 from singer import metrics, metadata, Transformer, utils
 from singer.utils import strptime_to_utc, strftime
 from tap_snapchat_ads.streams import flatten_streams, STREAMS
@@ -215,6 +216,8 @@ def sync_endpoint(
             start_window = last_dttm
         # Set end window
         end_window = start_window + timedelta(days=date_window_size)
+        if end_window > now_datetime:
+            end_window = now_datetime
 
     else:
         start_window = last_dttm
@@ -283,7 +286,7 @@ def sync_endpoint(
                     view_attribution_window=view_attribution_window)
                 params[key] = new_val
             # concate params
-            querystring = '&'.join(['%s=%s' % (key, value) for (key, value) in params.items()])
+            querystring = urllib.parse.urlencode(params)
 
             # initialize next_url
             next_url = '{}/{}?{}'.format(
